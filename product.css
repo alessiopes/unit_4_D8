@@ -1,0 +1,79 @@
+/* Stile per l'immagine del prodotto */
+#productImage {
+  object-fit: contain;
+  height: 500px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #cccccc;
+}
+
+/* Resize e centra l'immagine */
+.product-image-small {
+  width: 100%;
+  height: 300px;
+  object-position: center center;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ellipsis Card Title */
+.card-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+/* Ellipsis Card Description */
+.description-3-line {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+/* Card brand */
+.product-brand {
+  font-weight: thin;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+/* Card Price */
+.product-price {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.card:hover {
+  border: 1px solid lightgray;
+}
+
+.review {
+  cursor: pointer;
+}
+
+.btn-close {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.btn-close:hover {
+  color: gray;
+}
+
+.btn-close:focus {
+  outline: none;
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Area Admin - Ecommerce</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .id-cell {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 0;
+        max-width: 100px;
+      }
+
+      /* Rimuovere il quadrato di selezione che appare attorno alla "x" quando viene cliccata */
+      .close:focus {
+        outline: none;
+      }
+
+      .product-image {
+        height: 50px;
+        width: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.html">NOME ECOMMERCE</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin.html">Area Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">Carrello</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Lista Prodotti -->
+    <div class="container">
+      <h1 class="mt-4">Area Admin</h1>
+      <table class="table mt-4">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Immagine</th>
+            <th>Nome</th>
+            <th>Brand</th>
+            <th>Prezzo</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="productList">
+          <!-- Aggiungi più righe per i prodotti -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bottone per aprire la modale per creare un nuovo prodotto -->
+    <div class="text-center my-4">
+      <button id="addProductButton" class="btn btn-primary btn-lg">
+        Aggiungi prodotto
+      </button>
+    </div>
+
+    <!-- Bottone per caricare il file JSON -->
+    <div class="text-center my-4">
+      <button id="loadJSONButton" class="btn btn-secondary btn-lg">Carica JSON</button>
+    </div>
+
+    <!-- Modale Creazione Prodotto -->
+    <div class="modal" id="createProductModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Aggiungi prodotto</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Chiudi"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="addProductForm">
+              <div class="mb-3">
+                <label for="productName" class="form-label">Nome</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productName"
+                  placeholder="Inserisci il nome del prodotto"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="productDescription" class="form-label"
+                  >Descrizione</label
+                >
+                <textarea
+                  class="form-control"
+                  id="productDescription"
+                  placeholder="Inserisci la descrizione del prodotto"
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="productBrand" class="form-label">Brand</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productBrand"
+                  placeholder="Inserisci il brand del prodotto"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="productImageURL" class="form-label"
+                  >URL Immagine</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productImageURL"
+                  placeholder="Inserisci l'URL dell'immagine del prodotto"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="productPrice" class="form-label">Prezzo</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="productPrice"
+                  placeholder="Inserisci il prezzo del prodotto"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Aggiungi</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modale Aggiornameto Prodotto -->
+    <div class="modal" id="editModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modifica prodotto</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Chiudi"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="editProductForm">
+              <div class="mb-3">
+                <label for="editProductName" class="form-label">Nome</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editProductName"
+                  placeholder="Inserisci il nome del prodotto"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editProductDescription" class="form-label"
+                  >Descrizione</label
+                >
+                <textarea
+                  class="form-control"
+                  id="editProductDescription"
+                  placeholder="Inserisci la descrizione del prodotto"
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="editProductBrand" class="form-label">Brand</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editProductBrand"
+                  placeholder="Inserisci il brand del prodotto"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editProductImageURL" class="form-label"
+                  >URL Immagine</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editProductImageURL"
+                  placeholder="Inserisci l'URL dell'immagine del prodotto"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="editProductPrice" class="form-label">Prezzo</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="editProductPrice"
+                  placeholder="Inserisci il prezzo del prodotto"
+                  required
+                />
+              </div>
+              <span id="productId" style="display: none"></span>
+              <button type="submit" class="btn btn-primary">Aggiorna</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

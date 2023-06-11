@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrello</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="cart.css" />
+
+    <style>
+      .cart-product-image {
+        height: 50px;
+        width: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.html">NOME ECOMMERCE</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin.html">Area Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">Carrello</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Cart Container -->
+    <div class="container">
+      <h1 class="my-4">Carrello</h1>
+
+      <div id="cartEmptyMessage" class="alert alert-danger text-center mb-4">
+        <span class="bi bi-exclamation-circle-fill me-2"></span>
+        Il carrello è vuoto.
+      </div>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Immagine</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Prezzo Singolo</th>
+            <th scope="col">Quantità</th>
+            <th scope="col">Totale</th>
+            <th scope="col">Elimina</th>
+          </tr>
+        </thead>
+        <tbody id="cartItems">
+          <!-- Qui verranno inseriti dinamicamente i prodotti del carrello -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5" class="text-right"><strong>Totale</strong></td>
+            <td id="cartTotal" colspan="2"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div class="text-right mb-4">
+        <button id="emptyCartButton" class="btn btn-danger">
+          Svuota carrello
+        </button>
+        <button class="btn btn-primary" id="checkoutBtn">
+          Procedi al pagamento
+        </button>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Cart JS -->
+    <script src="cart.js"></script>
+  </body>
+</html>

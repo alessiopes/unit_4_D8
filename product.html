@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dettagli prodotto</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="product.css" />
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/a732f7dbd1.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.html">NOME ECOMMERCE</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin.html">Area Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">Carrello</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Pagina Prodotto -->
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-6 p-5">
+          <img src="" alt="" class="img-fluid" id="productImage" />
+        </div>
+        <div class="col-lg-6 mt-5">
+          <h1 id="productName"></h1>
+          <p id="productBrand"></p>
+          <p id="productDescription"></p>
+          <p id="productPrice"></p>
+          <div class="rating mb-3" style="color: #e0b700">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <button class="btn btn-primary" id="addToCartBtn">
+            Aggiungi al carrello
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sezione Recensioni -->
+    <div class="container py-5">
+      <h2>Recensioni dei clienti</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="review card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Recensione 1</h5>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu
+                ante ac turpis pharetra dapibus. Pellentesque habitant morbi
+                tristique senectus et netus et malesuada fames ac turpis
+                egestas.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Valutazione: 4/5</small>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="review card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Recensione 2</h5>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu
+                ante ac turpis pharetra dapibus. Pellentesque habitant morbi
+                tristique senectus et netus et malesuada fames ac turpis
+                egestas.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Valutazione: 3/5</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prodotti correlati -->
+    <div class="container py-5">
+      <h2 class="mb-3">Prodotti Correlati</h2>
+      <div class="row" id="relatedProductsContainer">
+        <!-- Qui verranno inseriti dinamicamente i prodotti correlati -->
+      </div>
+    </div>
+
+    <!-- Modale Aggiungi al Carrello -->
+    <div
+      class="modal fade"
+      id="addToCartModal"
+      tabindex="-1"
+      aria-labelledby="addToCartModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addToCartModalLabel">
+              Prodotto aggiunto al carrello
+            </h5>
+            <button type="button" class="btn-close bi bi-x-lg" aria-label="Close">
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Il prodotto è stato aggiunto al carrello.</p>
+            <p>
+              Vai al
+              <a href="cart.html">carrello</a>
+              per completare l'acquisto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h5>Informazioni</h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+              interdum justo sit amet lorem porta, id maximus ipsum maximus.
+            </p>
+          </div>
+          <div class="col-md-3">
+            <h5>Categorie</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Elettronica</a></li>
+              <li><a href="#">Abbigliamento</a></li>
+              <li><a href="#">Casa e giardino</a></li>
+              <li><a href="#">Sport e tempo libero</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Contatti</h5>
+            <ul class="list-unstyled">
+              <li>Indirizzo: Via Lorem Ipsum 123, 00100 Roma</li>
+              <li>Telefono: 0123456789</li>
+              <li>Email: info@example.com</li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Social</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-pinterest"></i> Pinterest</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2023 NOME ECOMMERCE. Tutti i diritti riservati.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p>Realizzato da Alessio Pes per Epicode</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="product.js"></script>
+    <script src="cart.js"></script>
+  </body>
+</html>
